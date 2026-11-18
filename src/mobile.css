@@ -1,0 +1,226 @@
+/* Mobile task flow: venue choice, readable content and actions within thumb reach. */
+.mobile-actions, .location-jump, .price-location-nav { display: none; }
+.training-panel__caption a > span { display: none; }
+
+@media (max-width: 980px) {
+  :root { --mobile-header: 76px; --safe-top: env(safe-area-inset-top, 0px); --safe-bottom: env(safe-area-inset-bottom, 0px); scroll-behavior: auto; }
+  html { scroll-behavior: auto; scroll-padding-top: calc(var(--mobile-header) + var(--safe-top) + 20px); scroll-padding-bottom: 100px; }
+  a, button, summary { -webkit-tap-highlight-color: transparent; }
+  .location-jump a:active, .price-location-nav a:active, .mobile-menu__locations a:active { background: #7c8b6b22; }
+  .mobile-actions { position: fixed; z-index: 25; bottom: 0; left: 0; right: 0; display: flex; gap: 10px; align-items: center; padding: 10px max(18px, env(safe-area-inset-right)) max(10px, var(--safe-bottom)) max(18px, env(safe-area-inset-left)); border-top: 1px solid var(--line-light); background: var(--asphalt); color: var(--white); transition: transform 180ms var(--ease-brand), opacity 140ms ease-out, visibility 180ms; }
+  .mobile-actions__phone { display: grid; width: 52px; height: 52px; flex: none; place-items: center; border: 1px solid #fafaf75c; }
+  .mobile-actions__phone .icon { width: 22px; height: 22px; }
+  .mobile-actions__primary { display: flex; min-height: 52px; flex: 1; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 18px; background: var(--signal); color: var(--ink); font-size: 14px; font-weight: 800; line-height: 1.4; }
+  .mobile-actions__primary:active { background: #e4ff87; }
+  .mobile-actions--venues .mobile-actions__primary { justify-content: space-between; background: transparent; border: 1px solid var(--line-light); color: var(--white); }
+  .mobile-actions--venues .mobile-actions__primary .icon { color: var(--signal); }
+  .js .mobile-actions:not(.is-active), .menu-is-open .mobile-actions { visibility: hidden; pointer-events: none; opacity: 0; transform: translateY(105%); }
+  .has-mobile-actions .site-footer { padding-bottom: calc(100px + var(--safe-bottom)); }
+  .price-location-nav { position: sticky; z-index: 20; top: calc(var(--mobile-header) + var(--safe-top)); display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: -10px calc(-1 * var(--gutter)) 30px; padding: 10px var(--gutter); background: var(--chalk); border-bottom: 1px solid var(--line-dark); }
+  .price-location-nav a { display: flex; align-items: center; justify-content: center; min-height: 46px; padding: 10px 12px; border: 1px solid #10131155; color: var(--ink); font-size: 14px; font-weight: 800; }
+  .price-location-nav a[aria-current=location] { background: var(--ink); border-color: var(--ink); color: var(--chalk); }
+  .price-location-nav a:focus-visible { outline-color: var(--ink); }
+  .pricing-location { scroll-margin-top: 75px; }
+  .pricing-location { grid-template-columns: 1fr; }
+  .pricing-location__head { display: flex; flex-wrap: wrap; align-items: end; gap: 12px 24px; }
+  .pricing-location__head > span { flex-basis: 100%; }
+  .pricing-location__head h2 { margin-bottom: 0; }
+  .pricing-location__head > a { min-height: 44px; }
+}
+
+@media (max-width: 720px) {
+  :root { --mobile-header: 64px; }
+  .site-header { height: calc(var(--mobile-header) + var(--safe-top)); padding-top: var(--safe-top); }
+  .site-header .brand { width: 92px; }
+  .mobile-menu > summary { min-width: 96px; }
+  .mobile-menu[open] > summary { top: calc(10px + var(--safe-top)); }
+  .mobile-menu__panel { padding-top: calc(16px + var(--safe-top)); }
+  .mobile-menu__top img { width: 92px; }
+  .mobile-menu__panel nav > a:not(.mobile-menu__action) { min-height: 52px; font-size: 42px; }
+  .mobile-menu__locations { gap: 12px; }
+  .mobile-menu__locations a { min-height: 48px; padding-right: 12px; font-size: 14px; }
+
+  .hero--campaign { min-height: min(750px, 100svh); }
+  .hero--campaign .hero__content { padding: calc(230px + var(--safe-top)) var(--gutter) 104px; }
+  .hero--campaign h1 { font-size: clamp(56px, 16.4vw, 96px); line-height: .92; }
+  .hero--campaign .hero__lede { font-size: 16px; line-height: 1.6; margin: 18px 0 22px; }
+  .hero__actions { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; width: 100%; max-width: 450px; }
+  .hero__actions .button { min-height: 56px; min-width: 0; gap: 10px; padding-inline: 14px; font-size: 14px; white-space: nowrap; }
+  .hero__actions .button .icon { width: 18px; }
+  .hero__method { min-height: 48px; font-size: 13px; white-space: nowrap; }
+  .hero-venues { top: calc(88px + var(--safe-top)); width: 174px; }
+  .hero-venues a { min-height: 46px; padding-inline: 4px; font-size: 13px; }
+  .hero--campaign .hero__bottom { bottom: 22px; align-items: center; justify-content: space-between; }
+  .hero--campaign .hero__bottom > a { display: none; }
+  .hero--campaign .hero__bottom > span { max-width: 150px; font-size: 12px; line-height: 1.4; }
+  .hero--campaign .hero__bottom small { position: static; max-width: 130px; font-size: 12px; text-align: right; }
+
+  .page-home main { display: flex; flex-direction: column; }
+  .page-home .hero { order: 0; }
+  .page-home .venue-picker { order: 1; }
+  .page-home .manifesto { order: 2; }
+  .page-home .home-method { order: 3; }
+  .page-home .training-section { order: 4; }
+  .page-home .home-prices { order: 5; }
+  .home-locations { padding-block: 56px 64px; scroll-margin-top: 0; }
+  .section-title h2, .home-method h2, .home-prices h2, .training-heading h2 { font-size: clamp(54px, 13.5vw, 76px); line-height: .94; }
+  .section-title > p, .training-heading > p, .home-method__copy p, .home-prices__head p { font-size: 16px; line-height: 1.7; }
+  .home-locations .section-title { gap: 18px; margin-bottom: 28px; }
+  .under-link { min-height: 44px; margin-top: 4px; padding-bottom: 4px; font-size: 14px; }
+  .location-teasers { gap: 32px; }
+  .location-teaser--montebrina { margin: 0; }
+  .location-teaser__photo, .location-teaser--montebrina .location-teaser__photo { height: clamp(230px, 72vw, 340px); }
+  .location-teaser__photo picture { height: 100%; }
+  .location-teaser__text { padding-top: 16px; }
+  .location-teaser h3 { font-size: 46px; line-height: 1; }
+  .location-teaser__text p { font-size: 14px; line-height: 1.6; }
+  .location-teaser__text b { min-height: 44px; margin-top: 8px; font-size: 14px; }
+  .manifesto { padding-block: 54px; gap: 24px; }
+  .manifesto h2 { font-size: 56px; line-height: .94; }
+  .manifesto li { font-size: 14px; }
+  .home-method__visual { height: 75vw; max-height: 340px; }
+  .home-method__copy { padding-block: 48px 54px; }
+  .method-mini li { min-height: 48px; font-size: 14px; }
+  .home-prices__head { padding-block: 52px; }
+  .home-prices__visual { min-height: 260px; height: 75vw; max-height: 340px; }
+  .price-preview a > span { font-size: 16px; }
+
+  .training-section { padding-block: 60px 48px; }
+  .training-heading { margin-bottom: 24px; }
+  .training-heading > p { margin-top: 20px; max-width: 380px; }
+  .training-layout { gap: 16px; }
+  .training-enhanced .training-tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 0; }
+  .training-tabs button { display: flex; min-height: 84px; flex-direction: column; align-items: center; justify-content: center; padding: 12px 5px; border: 1px solid var(--line-light); border-right: 0; text-align: center; }
+  .training-tabs button:last-child { border-right: 1px solid var(--line-light); }
+  .training-tab__name { font-size: clamp(23px, 6.5vw, 32px); line-height: 1.04; }
+  .training-tab__name > span { display: block; }
+  .training-tab__detail, .training-tabs button .icon { display: none; }
+  .training-tabs button[aria-selected=true] { background: var(--signal); border-color: var(--signal); }
+  .training-tabs button[aria-selected=true] .training-tab__name { color: var(--ink); }
+  .training-panel { min-height: 0; height: auto; }
+  .training-panel > picture { position: relative; height: clamp(300px, 90vw, 440px); }
+  .training-panel img { object-position: center 50%; }
+  .training-panel__caption { position: static; display: flex; flex-wrap: wrap; align-items: center; padding: 18px; background: var(--asphalt-2); }
+  .training-panel__caption > div { flex: 1; min-width: 150px; }
+  .training-panel__caption h3 { font-size: 16px; }
+  .training-panel__caption p { max-width: 250px; font-size: 14px; line-height: 1.5; }
+  .training-panel__caption a { display: flex; min-width: 96px; min-height: 48px; width: auto; height: auto; gap: 8px; padding: 12px; font-size: 14px; font-weight: 800; }
+  .training-panel__caption a > span { display: inline; }
+  .training-panel__caption a .icon { width: 16px; height: 16px; }
+
+  .page-hero { padding-top: calc(104px + var(--safe-top)); padding-bottom: 48px; gap: 26px; }
+  .page-hero__copy h1 { font-size: clamp(54px, 14vw, 84px); line-height: .92; }
+  .page-hero__copy > p:not(.breadcrumb) { font-size: 16px; line-height: 1.7; margin-block: 22px; }
+  .breadcrumb { margin-bottom: 22px; font-size: 13px; }
+  .breadcrumb a { display: inline-flex; min-height: 44px; align-items: center; }
+  .page-hero__image { height: clamp(250px, 70vw, 360px); }
+  .page-hero__edge { position: static; margin-top: -8px; font-size: 12px; }
+  .location-jump { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 24px; }
+  .location-jump a { display: flex; align-items: center; justify-content: space-between; min-height: 52px; gap: 8px; padding: 12px; border: 1px solid var(--line-light); font-size: 14px; font-weight: 800; }
+  .location-jump .icon { width: 16px; height: 16px; color: var(--signal); }
+  .location-feature, .location-feature--montebrina { gap: 24px; padding-block: 48px 56px; }
+  .location-feature__copy h2 { font-size: 64px; line-height: .94; }
+  .location-feature__copy > p { font-size: 16px; }
+  .location-feature__photo { height: clamp(260px, 78vw, 390px); }
+  .place-data { gap: 14px; }
+  .place-data span, .place-data address { font-size: 14px; }
+  .location-choice { padding-block: 26px; }
+  .location-choice a { min-height: 44px; }
+
+  .venue-hero { min-height: max(600px, 80svh); padding: calc(110px + var(--safe-top)) var(--gutter) 72px; }
+  .venue-hero h1 { font-size: clamp(74px, 19vw, 120px); line-height: .92; }
+  .venue-hero__copy > p:not(.breadcrumb) { font-size: 16px; line-height: 1.7; }
+  .venue-hero__copy .button { width: 100%; min-height: 56px; }
+  .venue-hero__number, .venue-hero--montebrina .venue-hero__number { top: calc(106px + var(--safe-top)); right: var(--gutter); font-size: 90px; opacity: .7; }
+  .venue-ribbon { gap: 18px; }
+  .venue-ribbon > a { min-height: 44px; }
+  .venue-intro { padding-block: 56px; }
+  .venue-intro__head h2, .venue-gallery h2, .venue-prices h2 { font-size: 56px; line-height: .94; }
+  .venue-intro__head > p { font-size: 16px; }
+  .venue-intro__notes > p { font-size: 14px; line-height: 1.75; }
+  .venue-gallery { padding-block: 54px; }
+  .gallery-grid { grid-template-rows: none; grid-auto-rows: clamp(105px, 34vw, 200px); }
+  .gallery-grid figure:first-child { grid-row: auto; }
+  .gallery-grid figure:nth-child(4) { grid-column: auto; }
+  .venue-prices { padding-block: 54px; }
+  .plan__link { min-height: 48px; font-size: 14px; }
+  .venue-cta h2 { font-size: 52px; line-height: .94; }
+  .venue-cta .button { width: 100%; min-height: 56px; }
+  .process { padding-block: 56px; }
+  .process-heading h2 { font-size: 58px; line-height: .94; }
+  .process-heading > p, .process-list p { font-size: 16px; line-height: 1.7; }
+  .process-list li { padding-block: 20px; }
+  .method-editorial { padding-block: 54px; }
+  .method-editorial > h2 { font-size: 56px; line-height: .94; }
+  .method-editorial article { gap: 22px; padding-bottom: 32px; }
+  .method-editorial article > picture { height: min(88vw, 380px); }
+  .method-editorial h3 { font-size: 44px; line-height: .98; }
+  .method-editorial article p { font-size: 16px; line-height: 1.7; }
+  .pricing-page { padding-top: 24px; padding-bottom: 54px; }
+  .pricing-intro { margin-bottom: 32px; }
+  .pricing-intro h2 { font-size: 56px; line-height: .94; }
+  .pricing-intro p { font-size: 16px; }
+  .pricing-location__head { display: grid; }
+  .pricing-location__head h2 { font-size: 52px; line-height: .95; }
+  .pricing-location .plan li { font-size: 15px; line-height: 1.6; }
+  .pricing-location .plan__desc { font-size: 14px; }
+  .contact-hub { padding-block: 52px; }
+  .contact-hub__main > p { font-size: 16px; }
+  .contact-number { min-height: 52px; }
+  .contact-hub__locations address { font-size: 15px; }
+  .contact-hub__locations a { min-height: 44px; font-size: 14px; }
+  .faq { padding-block: 52px; }
+  .faq__head h2 { font-size: 56px; line-height: .94; }
+  .faq__head > p, .faq-list summary { font-size: 16px; }
+  .faq-list details p { font-size: 15px; line-height: 1.7; }
+  .footer-start > h2 { font-size: 56px; line-height: .94; }
+  .site-footer { padding-top: 52px; }
+  .footer-start { gap: 28px; margin-bottom: 34px; }
+  .footer-venues a { min-height: 88px; }
+  .footer-connect nav a { min-height: 48px; font-size: 14px; }
+  .mobile-menu__phone { min-height: 44px; }
+}
+
+@media (max-width: 360px) {
+  .hero__method { font-size: 12px; }
+  .hero__actions { gap: 10px; }
+  .hero__actions .button { padding-inline: 10px; font-size: 13px; }
+  .hero--campaign .hero__content { padding-top: 210px; }
+  .training-panel__caption a { width: 100%; justify-content: space-between; }
+  .mobile-actions__primary { padding-inline: 12px; font-size: 13px; }
+}
+
+@media (max-width: 980px) and (max-height: 500px) and (orientation: landscape) {
+  :root { --mobile-header: 64px; }
+  .site-header { height: calc(64px + var(--safe-top)); padding-top: var(--safe-top); }
+  .site-header .brand, .mobile-menu__top img { width: 92px; }
+  .mobile-menu[open] > summary { top: calc(10px + var(--safe-top)); }
+  .mobile-menu__panel { padding-top: calc(14px + var(--safe-top)); }
+  .mobile-menu__panel nav { display: grid; grid-template-columns: 1fr 1fr; gap: 0 30px; margin: 15px 0; padding: 0; }
+  .mobile-menu__panel nav > a:not(.mobile-menu__action) { min-height: 42px; padding-block: 6px; font-size: 30px; }
+  .mobile-menu__locations { grid-column: 2; grid-row: 2; padding: 0; gap: 18px; }
+  .mobile-menu__locations a { min-height: 42px; }
+  .mobile-menu__panel nav > a:nth-child(4) { grid-column: 1; grid-row: 2; }
+  .mobile-menu__panel nav > a:nth-child(5) { grid-column: 1; grid-row: 3; }
+  .mobile-menu__panel nav > a:nth-child(6) { grid-column: 2; grid-row: 3; }
+  .mobile-menu__panel nav > .mobile-menu__action { grid-column: 1 / -1; min-height: 44px; margin-top: 14px; }
+  .mobile-menu__phone { padding-top: 12px; }
+  .hero--campaign { min-height: 100svh; }
+  .hero--campaign .hero__content { padding: 90px var(--gutter) 58px; }
+  .hero--campaign h1 { font-size: 54px; line-height: .9; }
+  .hero--campaign .hero__lede { font-size: 14px; line-height: 1.45; margin: 12px 0; }
+  .hero__actions { max-width: 360px; }
+  .hero__actions .button { min-height: 48px; }
+  .hero-venues { top: auto; bottom: 80px; width: 210px; }
+  .hero__bottom { bottom: 14px; }
+  .hero__bottom > a { display: none; }
+  .hero__bottom small { position: static; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-actions { transition: none; }
+}
+
+@media (hover: none) {
+  .button:hover, .location-teaser:hover .location-teaser__photo img, .gallery-grid figure:hover img { transform: none; }
+}

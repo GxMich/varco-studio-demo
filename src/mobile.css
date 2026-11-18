@@ -17,7 +17,7 @@
   .js .mobile-actions:not(.is-active), .menu-is-open .mobile-actions { visibility: hidden; pointer-events: none; opacity: 0; transform: translateY(105%); }
   .has-mobile-actions .site-footer { padding-bottom: calc(100px + var(--safe-bottom)); }
   .price-location-nav { position: sticky; z-index: 20; top: calc(var(--mobile-header) + var(--safe-top)); display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: -10px calc(-1 * var(--gutter)) 30px; padding: 10px var(--gutter); background: var(--chalk); border-bottom: 1px solid var(--line-dark); }
-  .price-location-nav a { display: flex; align-items: center; justify-content: center; min-height: 46px; padding: 10px 12px; border: 1px solid #10131155; color: var(--ink); font-size: 14px; font-weight: 800; }
+  .price-location-nav a { display: flex; align-items: center; justify-content: center; min-height: 46px; padding: 10px 12px; border: 1px solid #0f131155; color: var(--ink); font-size: 14px; font-weight: 800; }
   .price-location-nav a[aria-current=location] { background: var(--ink); border-color: var(--ink); color: var(--chalk); }
   .price-location-nav a:focus-visible { outline-color: var(--ink); }
   .pricing-location { scroll-margin-top: 75px; }
